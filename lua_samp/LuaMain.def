@@ -1,0 +1,9 @@
+EXPORTS
+	Supports
+	Load
+	Unload
+	ProcessTick
+	OnGameModeInit
+	OnPublicCall
+	OnPlayerCommandText
+	OnRconCommand
