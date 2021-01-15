@@ -56,13 +56,23 @@ int CResourceManager::LoadResource()
 		while (pElement != nullptr)
 		{
 			std::string srcFile(pElement->Attribute("src"));
+			std::string srcExtension(srcFile.substr(srcFile.find_last_of('.'), std::string::npos));
 			bool IsValid = IsValidFile(srcFile.c_str());
 
 			if (IsValid)
 			{
-				//CUtility::printf("A: %s", luaScript->GetResourceName().c_str());
-				luaScript->AddFile(srcFile);
-				//r_validScripts.push_back(luaScript);
+				if (srcExtension.compare(".lua") == 0)
+				{
+					//CUtility::printf("A: %s", luaScript->GetResourceName().c_str());
+					luaScript->AddFile(srcFile);
+					//r_validScripts.push_back(luaScript);
+				}
+				else
+				{
+					CUtility::printf("Unable to load the file: %s (this file does not contain the .lua extension)", srcFile.c_str());
+					delete luaScript;
+					return 2;
+				}
 			}
 			else
 			{

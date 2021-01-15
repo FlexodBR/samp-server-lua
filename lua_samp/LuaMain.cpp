@@ -75,14 +75,14 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void **ppData)
 	s_Core->RegisterCallback("onPlayerSelectObject", { ArgumentType::TYPE_INT, ArgumentType::TYPE_INT, ArgumentType::TYPE_INT, ArgumentType::TYPE_INT, ArgumentType::TYPE_FLOAT, ArgumentType::TYPE_FLOAT, ArgumentType::TYPE_FLOAT });
 	s_Core->RegisterCallback("onPlayerWeaponShot", { ArgumentType::TYPE_INT, ArgumentType::TYPE_INT, ArgumentType::TYPE_INT, ArgumentType::TYPE_INT, ArgumentType::TYPE_FLOAT, ArgumentType::TYPE_FLOAT, ArgumentType::TYPE_FLOAT });
 	
-	sampgdk::logprintf(" Lua in SA-MP %s by DrAkE successfully loaded.", PLUGIN_VERSION);
+	sampgdk::logprintf(" Lua in SA-MP %s created by DrAkE and edited by Flexod successfully loaded.", PLUGIN_VERSION);
 
 	return load;
 }
 
 PLUGIN_EXPORT void PLUGIN_CALL Unload()
 {
-	sampgdk::logprintf(" Lua in SA-MP %s by DrAkE successfully unloaded.", PLUGIN_VERSION);
+	sampgdk::logprintf(" Lua in SA-MP %s created by DrAkE and edited by Flexod successfully unloaded.", PLUGIN_VERSION);
 	sampgdk::Unload();
 }
 
