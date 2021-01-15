@@ -10,7 +10,7 @@ A plugin to program Lua in the SA-MP.
 
 - Now in the same file "server.cfg", add the line "luascripts filename" **(Example: luascripts lvdm)**.
 
-- If you want to use modules, add the line "luamodules filename.dll".1
+- If you want to use modules, add the line "luamodules filename.dll".
 
 ## Credits
 
