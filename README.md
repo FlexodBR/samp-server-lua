@@ -4,7 +4,7 @@ A plugin to program Lua in the SA-MP.
 
 ## Installation
 
-- Install the plugin files on your SAMP server **[Download](https://github.com/FlexodBR/samp-server-lua/releases/tag/v0.2.5)**.
+- Install the **[plugin files](https://github.com/FlexodBR/samp-server-lua/releases/tag/v0.2.5)** on your SAMP server.
 
 - Add to the "server.cfg" server configuration file the line "plugins lua_samp" for Windows, or "plugins lua_samp.so" for Linux.
 
