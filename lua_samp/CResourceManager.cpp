@@ -60,7 +60,6 @@ int CResourceManager::LoadResource()
 
 			if (IsValid)
 			{
-				
 				//CUtility::printf("A: %s", luaScript->GetResourceName().c_str());
 				luaScript->AddFile(srcFile);
 				//r_validScripts.push_back(luaScript);
