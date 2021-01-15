@@ -89,7 +89,7 @@ PLUGIN_EXPORT bool PLUGIN_CALL OnPublicCall(AMX *amx, const char *name, cell *pa
 				{
 					//CUtility::printf("Push float: %f", params[numArg]);
 					char buff[32];
-					sprintf(buff, "%f", params[numArg]);
+					sprintf(buff, "%f", (float)params[numArg]);
 
 					lua_pushstring(L, buff);
 					break;

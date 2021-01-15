@@ -31,6 +31,7 @@
 #ifndef AMX_H_INCLUDED
 #define AMX_H_INCLUDED
 
+#define HAVE_STDINT_H 1 //Remove this if you need to compile on linux.
 #if defined HAVE_STDINT_H
   #include <stdint.h>
 #else
@@ -82,7 +83,7 @@
 #if HAVE_ALLOCA_H
   #include <alloca.h>
 #endif
-#if defined __WIN32__ || defined _WIN32 || defined WIN32 /* || defined __MSDOS__ */
+#if defined __LINUX__ || defined _LINUX || defined LINUX /* || defined __MSDOS__ */
   #if !defined alloca
     #define alloca(n)   _alloca(n)
   #endif

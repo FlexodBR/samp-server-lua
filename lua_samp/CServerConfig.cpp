@@ -51,7 +51,7 @@ std::string CServerConfig::GetSetting(std::string key, const int index)
 		if (index == -1)
 		{
 			std::stringstream ss;
-			for (size_t i = 0; i < GetSettingSize(key); ++i)
+			for (int i = 0; i < GetSettingSize(key); ++i)
 			{
 				if (i != 0)
 					ss << " ";
