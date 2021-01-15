@@ -14,4 +14,4 @@ A plugin to program Lua in the SA-MP.
 
 ## Credits
 
-- (Drakeee) All credits go to [him](https://github.com/drakeee).
+- All credits go to [him](https://github.com/drakeee) (Drakeee).
