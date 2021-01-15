@@ -6,6 +6,6 @@ A plugin to program Lua in the SA-MP.
 
 - Coming soon
 
-##
+## Credits
 
 - (Drakeee) All credits go [to] (https://github.com/drakeee)
