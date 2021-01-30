@@ -1,11 +1,8 @@
 #include "CResourceManager.h"
 #include "CCore.h"
 
-using namespace tinyxml2;
-
 CResourceManager::CResourceManager(const char* rN)
 {
-	//CUtility::printf("Constructor");
 	r_resourceName = rN;
 	r_isRunning = false;
 	//r_isActive = false;
@@ -14,13 +11,12 @@ CResourceManager::CResourceManager(const char* rN)
 
 CResourceManager::~CResourceManager()
 {
-	//CUtility::printf("Destructor");
 	s_Core->DeleteResource(r_resourceName.c_str());
 }
 
 bool CResourceManager::IsValidFile(std::string szFileScript)
 {
-	std::string file(LUA_RESOURCES_FOLDER + r_resourceName + "/" + szFileScript);
+	std::string file(LUA_RESOURCES_FOLDER + szFileScript + ".lua");
 	std::ifstream fileScript(file);
 	if (fileScript.good())
 	{
@@ -35,64 +31,23 @@ bool CResourceManager::IsValidFile(std::string szFileScript)
 }
 
 int CResourceManager::LoadResource()
-{
-	std::string xmlFile(LUA_RESOURCES_FOLDER + r_resourceName + "/meta.xml");
-	tinyxml2::XMLDocument doc;
-	XMLError eResult = doc.LoadFile(xmlFile.c_str());
+{	
+	CLuaManager *luaScript = new CLuaManager(r_resourceName);
 
-	if (eResult == XML_SUCCESS)
-	{
-		XMLNode * pRoot = doc.FirstChild();
-		if (pRoot == nullptr)
-		{
-			CUtility::printf("Unable to handle the XML file!");
-			delete this;
-			return 1;
-		}
+	bool IsValid = IsValidFile(r_resourceName);
 
-		XMLElement * pElement = pRoot->FirstChildElement("script");
-		CLuaManager *luaScript = new CLuaManager(r_resourceName);
-
-		while (pElement != nullptr)
-		{
-			std::string srcFile(pElement->Attribute("src"));
-			std::string srcExtension(srcFile.substr(srcFile.find_last_of('.'), std::string::npos));
-			bool IsValid = IsValidFile(srcFile.c_str());
-
-			if (IsValid)
-			{
-				if (srcExtension.compare(".lua") == 0)
-				{
-					//CUtility::printf("A: %s", luaScript->GetResourceName().c_str());
-					luaScript->AddFile(srcFile);
-					//r_validScripts.push_back(luaScript);
-				}
-				else
-				{
-					CUtility::printf("Unable to load the file: %s (this file does not contain the .lua extension)", srcFile.c_str());
-					delete luaScript;
-					return 2;
-				}
-			}
-			else
-			{
-				CUtility::printf("Unable to load the file: %s (file not exists)", srcFile.c_str());
-				delete luaScript;
-				return 2;
-			}
-
-			pElement = pElement->NextSiblingElement("script");
-		}
-
-		r_validScript = luaScript;
-		r_isScriptsValid = true;
+	if (IsValid) {
+		luaScript->AddFile(r_resourceName);
 	}
 	else
 	{
-		CUtility::printf("Unable to load '%s' resource! (unable to open XML file)", r_resourceName.c_str());
-		delete this;
-		return 3;
+		CUtility::printf("Unable to load the file: %s (The file does not exist or does not contain the extension \".lua\")", r_resourceName);
+		delete luaScript;
+		return 2;
 	}
+
+	r_validScript = luaScript;
+	r_isScriptsValid = true;
 
 	return 4;
 }

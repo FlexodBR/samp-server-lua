@@ -14,7 +14,6 @@ CLuaManager::CLuaManager(std::string rName)
 
 CLuaManager::~CLuaManager()
 {
-	//CUtility::printf("CLuaManager destrcutor!");
 	CallInitExit("onScriptExit");
 	CTimer::DeleteLuaTimers(lua_VM);
 	//CContainer::LuaManager::Delete(lua_VM);
@@ -36,7 +35,7 @@ void CLuaManager::StartLua(void)
 {
 	for (auto it = fileContainer.begin(); it != fileContainer.end(); ++it)
 	{
-		std::string fileWithPath(LUA_RESOURCES_FOLDER + resourceName + "/" + (*it));
+		std::string fileWithPath(LUA_RESOURCES_FOLDER + resourceName + ".lua");
 		//lua_getglobal(lua_VM, "debug");
 		//lua_getfield(lua_VM, -1, "traceback");
 		luaL_loadfile(lua_VM, fileWithPath.c_str());
@@ -77,10 +76,7 @@ void CLuaManager::CallInitExit(const char* scriptInit)
 
 void CLuaManager::DisableFunctions(lua_State *L)
 {
-	lua_register(L, "dofile", CLuaFunctions::DisableFunction);
-	lua_register(L, "loadfile", CLuaFunctions::DisableFunction);
 	lua_register(L, "loadlib", CLuaFunctions::DisableFunction);
-	lua_register(L, "require", CLuaFunctions::DisableFunction);
 	lua_register(L, "setfenv", CLuaFunctions::DisableFunction);
 	lua_register(L, "getfenv", CLuaFunctions::DisableFunction);
 }

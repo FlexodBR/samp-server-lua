@@ -6,7 +6,6 @@
 #include <fstream>
 #include "CLuaManager.h"
 #include "CUtility.h"
-#include "TinyXML/tinyxml2.h"
 
 extern "C"
 {
