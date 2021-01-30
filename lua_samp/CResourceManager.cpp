@@ -41,7 +41,7 @@ int CResourceManager::LoadResource()
 	}
 	else
 	{
-		CUtility::printf("Unable to load the file: %s (The file does not exist or does not contain the extension \".lua\")", r_resourceName);
+		CUtility::printf("Unable to load the file: %s (The file does not exist or does not contain the extension \".lua\")", r_resourceName.c_str()
 		delete luaScript;
 		return 2;
 	}
