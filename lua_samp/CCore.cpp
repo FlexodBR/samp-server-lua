@@ -68,28 +68,33 @@ void CCore::LoadResources()
 bool CCore::LoadResource(std::string resourceName)
 {
 	bool IsResourceRunning = s_Core->IsResourceRunning(resourceName.c_str());
-	if (!IsResourceRunning)
+	if (IsResourceRunning)
 	{
-		CResourceManager* resource = new CResourceManager(resourceName.c_str());
-		resource->LoadResource();
+		//Get the pointer by the resource name
+		CResourceManager* resource = s_Core->GetResourceByName(resourceName.c_str());
 
-		if (resource->IsResourceValid())
-		{
-			//Give some info to the user
-			CUtility::printf("'%s' resource is successfully started.", resource->GetResourceName().c_str());
+		//Stop the resource
+		resource->StopResource();
 
-			//Start the resource
-			resource->StartResource();
-
-			//Register the resource pointer in the core object
-			s_Core->RegisterResource(resource);
-
-			return true;
-		}
+		//Delete the resource object
+		delete resource;
 	}
-	else
+
+	CResourceManager* resource = new CResourceManager(resourceName.c_str());
+	resource->LoadResource();
+
+	if (resource->IsResourceValid())
 	{
-		CUtility::printf("Unable to load '%s' resource! (resource is running)", resourceName.c_str());
+		//Give some info to the user
+		CUtility::printf("'%s' resource is successfully started.", resource->GetResourceName().c_str());
+
+		//Start the resource
+		resource->StartResource();
+
+		//Register the resource pointer in the core object
+		s_Core->RegisterResource(resource);
+
+		return true;
 	}
 
 	return false;
