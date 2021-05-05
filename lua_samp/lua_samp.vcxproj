@@ -72,7 +72,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LUA_SAMP2_EXPORTS;_CRT_SECURE_NO_WARNINGS=1;SAMPGDK_WINDOWS=1;SAMPGDK_AMALGAMATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;HAVE_STDINT_H;LUA_SAMP2_EXPORTS;_CRT_SECURE_NO_WARNINGS=1;SAMPGDK_WINDOWS=1;SAMPGDK_AMALGAMATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -137,7 +137,6 @@
     <ClCompile Include="Include\Lua_351\lzio.c" />
     <ClCompile Include="Include\sampgdk\sampgdk.c" />
     <ClCompile Include="Include\SDK\amxplugin.cpp" />
-    <ClCompile Include="Include\TinyXML\tinyxml2.cpp" />
     <ClCompile Include="LuaMain.cpp" />
   </ItemGroup>
   <ItemGroup>

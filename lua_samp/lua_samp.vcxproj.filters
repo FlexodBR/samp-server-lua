@@ -41,9 +41,6 @@
     <ClCompile Include="CSampCallbacks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Include\TinyXML\tinyxml2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Include\Lua_351\lapi.c">
       <Filter>Source Files</Filter>
     </ClCompile>
