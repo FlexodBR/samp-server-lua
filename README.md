@@ -14,5 +14,5 @@ A plugin to program Lua in the SA-MP.
 
 ## Credits
 
-- [Drakeee](https://github.com/drakeee) for creating the plugin
-- [Zeex](https://github.com/Zeex) by SAMP-GDK
+- [Drakeee](https://github.com/drakeee/samp-plugin-lua) for creating the plugin
+- [Zeex](https://github.com/Zeex/sampgdk) by SAMP-GDK
