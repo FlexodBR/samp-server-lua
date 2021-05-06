@@ -33,20 +33,17 @@ void CLuaManager::InitVM()
 
 void CLuaManager::StartLua(void)
 {
-	for (auto it = fileContainer.begin(); it != fileContainer.end(); ++it)
+	std::string fileWithPath(LUA_RESOURCES_FOLDER + resourceName + ".lua");
+	//lua_getglobal(lua_VM, "debug");
+	//lua_getfield(lua_VM, -1, "traceback");
+	luaL_loadfile(lua_VM, fileWithPath.c_str());
+
+	int s = lua_pcall(lua_VM, 0, LUA_MULTRET, 0);
+
+	if (s != 0)
 	{
-		std::string fileWithPath(LUA_RESOURCES_FOLDER + resourceName + ".lua");
-		//lua_getglobal(lua_VM, "debug");
-		//lua_getfield(lua_VM, -1, "traceback");
-		luaL_loadfile(lua_VM, fileWithPath.c_str());
-
-		int s = lua_pcall(lua_VM, 0, LUA_MULTRET, 0);
-
-		if (s != 0)
-		{
-			CUtility::printf("-- %s", lua_tostring(lua_VM, -1));
-			lua_pop(lua_VM, 1);
-		}
+		CUtility::printf("-- %s", lua_tostring(lua_VM, -1));
+		lua_pop(lua_VM, 1);
 	}
 
 	CallInitExit("onScriptInit");
