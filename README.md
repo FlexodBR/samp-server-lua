@@ -4,11 +4,11 @@ A plugin to program Lua in the SA-MP
 
 ## Installation
 
-- Install the **[plugin files](https://github.com/FlexodBR/samp-server-lua/releases)** on your SAMP server
+- Install the **[plugin files](https://github.com/FlexodBR/samp-server-lua/releases)** in the "plugin" folder
 
 - Add to the "server.cfg" server configuration file the line "plugins lua_samp" for Windows, or "plugins lua_samp.so" for Linux
 
-- Now in the same file "server.cfg", add the line "luascripts filename" **(Example: luascripts lvdm)**
+- n the same file "server.cfg", add the line "luascripts filename" **(Example: luascripts lvdm)**
 
 - If you want to use modules, add the line "luamodules filename.dll"
 
